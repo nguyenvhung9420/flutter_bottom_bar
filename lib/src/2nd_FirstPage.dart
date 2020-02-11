@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'Foundation.dart';
 import 'package:flutter/cupertino.dart';
 
-class FirstPage extends StatelessWidget {
+class Next_FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
       body: Center(
-        child: new IconButton(
-          icon: new Icon(Icons.arrow_right),
+        child: new OutlineButton(
           onPressed: () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                'login', (Route<dynamic> route) => false);
+            Navigator.of(context).pushNamed('/');
           },
         ),
       ),

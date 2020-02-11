@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bottom_bar/src/TjuatjaPage.dart';
 import 'Foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'FirstPage.dart';
@@ -26,58 +27,61 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> tabs = [
     FirstPage(),
     SecondPage(),
-    ThirdPage(),
+    // ThirdPage(),
+    TjuatjaPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    if (isIos) {
-      return CupertinoTabScaffold(
-          tabBar: CupertinoTabBar(items: [
+    // if (isIos) {
+    //   return CupertinoTabScaffold(
+    //       tabBar: CupertinoTabBar(items: [
+    //         BottomNavigationBarItem(
+    //             icon: Icon(CupertinoIcons.home), title: Text("Home")),
+    //         BottomNavigationBarItem(
+    //             icon: Icon(CupertinoIcons.search), title: Text("Search")),
+    //         BottomNavigationBarItem(
+    //             icon: Icon(CupertinoIcons.person), title: Text("User Info"))
+    //       ]),
+    //       tabBuilder: (context, index) {
+    //         switch (index) {
+    //           case 0:
+    //             return FirstPage();
+    //             break;
+    //           case 1:
+    //             return SecondPage();
+    //             break;
+    //           case 2:
+    //             return ThirdPage();
+    //             break;
+    //           default:
+    //             return FirstPage();
+    //             break;
+    //         }
+    //       });
+    // }
+    // //Android Scafold
+    // else {
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: Text(widget.title),
+      // ),
+      // Body Where the content will be shown of each page index
+      body: tabs[currentTabIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentTabIndex,
+          onTap: onTapped,
+          items: [
             BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.home), title: Text("Home")),
+                icon: Icon(Icons.home), title: Text("Home")),
             BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.search), title: Text("Search")),
+                icon: Icon(Icons.search), title: Text("Search")),
+            // BottomNavigationBarItem(
+            //     icon: Icon(Icons.person), title: Text("User Info")),
             BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.person), title: Text("User Info"))
+                icon: Icon(Icons.hotel), title: Text("Tjuatja"))
           ]),
-          tabBuilder: (context, index) {
-            switch (index) {
-              case 0:
-                return FirstPage();
-                break;
-              case 1:
-                return SecondPage();
-                break;
-              case 2:
-                return ThirdPage();
-                break;
-              default:
-                return FirstPage();
-                break;
-            }
-          });
-    }
-    //Android Scafold
-    else {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        // Body Where the content will be shown of each page index
-        body: tabs[currentTabIndex],
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: currentTabIndex,
-            onTap: onTapped,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home), title: Text("Home")),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), title: Text("Search")),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), title: Text("User Info"))
-            ]),
-      );
-    }
+    );
   }
 }
+// }
